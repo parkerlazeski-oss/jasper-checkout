@@ -53,7 +53,8 @@ def send_email(recipients, subject, body):
             s.login(SMTP_USER, SMTP_PASS)
             s.sendmail(EMAIL_FROM, recipients, msg.as_string())
         return True
-    except Exception:
+    except Exception as e:
+        print(f"EMAIL FAIL: {type(e).__name__}: {e}", flush=True)
         return False
 
 
