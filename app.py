@@ -9,6 +9,8 @@ All secrets come from environment variables — nothing sensitive lives in this 
 """
 import json
 import os
+import smtplib
+from email.mime.text import MIMEText
 
 import requests
 import stripe
@@ -28,6 +30,30 @@ ALLOWED_ORIGINS = {SITE, "https://www.the22dayreset.com"}
 # comma-separated lists so recipients can change without a code push
 HIT_SMS_TO = [n.strip() for n in os.environ.get("HIT_SMS_TO", "").split(",") if n.strip()]
 SALE_SMS_TO = [n.strip() for n in os.environ.get("SALE_SMS_TO", "").split(",") if n.strip()]
+HIT_EMAIL_TO = [e.strip() for e in os.environ.get("HIT_EMAIL_TO", "").split(",") if e.strip()]
+SALE_EMAIL_TO = [e.strip() for e in os.environ.get("SALE_EMAIL_TO", "").split(",") if e.strip()]
+SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.mail.me.com")
+SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
+SMTP_USER = os.environ.get("SMTP_USER", "")
+SMTP_PASS = os.environ.get("SMTP_PASS", "")
+EMAIL_FROM = os.environ.get("EMAIL_FROM", SMTP_USER)
+
+
+def send_email(recipients, subject, body):
+    if not (recipients and SMTP_USER and SMTP_PASS):
+        return False
+    try:
+        msg = MIMEText(body)
+        msg["Subject"] = subject
+        msg["From"] = f"The 22 Day Reset <{EMAIL_FROM}>"
+        msg["To"] = ", ".join(recipients)
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=15) as s:
+            s.starttls()
+            s.login(SMTP_USER, SMTP_PASS)
+            s.sendmail(EMAIL_FROM, recipients, msg.as_string())
+        return True
+    except Exception:
+        return False
 
 
 def send_sms(to, body):
@@ -83,6 +109,7 @@ def lead():
     )
     for n in HIT_SMS_TO:
         send_sms(n, hit)
+    send_email(HIT_EMAIL_TO, f"🔥 Reset checkout hit — {first} {last}", hit)
 
     try:
         session = stripe.checkout.Session.create(
@@ -122,6 +149,7 @@ def webhook():
         )
         for n in SALE_SMS_TO:
             send_sms(n, sale)
+        send_email(SALE_EMAIL_TO, f"💰 SALE — {name} joined the 22 Day Reset", sale)
     return "ok"
 
 

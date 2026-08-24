@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The 22 Day Nervous System Reset with Melissa Rose — find calm, clarity + confidence, even when life gets loud. Begins 11/11.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#127801;</text></svg>">
+<title>The 22 Day Reset</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap">
+<style>
+  :root{
+    --bg:#F6F2EA;
+    --surface:#FCFAF5;
+    --surface-2:#F0EADD;
+    --ink:#241D14;
+    --ink-soft:#5C5346;
+    --stone:#8A7E6B;
+    --gold:#A8842F;
+    --gold-soft:#C4A45C;
+    --line:#DDD3C0;
+    --band:#241D14;
+    --band-2:#2E251A;
+    --band-ink:#EFE7D8;
+    --band-soft:#B4A88F;
+    --band-line:rgba(196,164,92,.24);
+    --shadow:0 1px 2px rgba(36,29,20,.05),0 12px 40px -18px rgba(36,29,20,.18);
+    --focus:#A8842F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#181410;
+      --surface:#211C16;
+      --surface-2:#2A2119;
+      --ink:#EDE5D6;
+      --ink-soft:#BFB49E;
+      --stone:#9C8F77;
+      --gold:#D0AC5E;
+      --gold-soft:#B08F49;
+      --line:#3A3226;
+      --band:#100D0A;
+      --band-2:#191410;
+      --band-ink:#EFE7D8;
+      --band-soft:#9C8F77;
+      --band-line:rgba(176,143,73,.28);
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 40px -18px rgba(0,0,0,.5);
+      --focus:#D0AC5E;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#181410;
+    --surface:#211C16;
+    --surface-2:#2A2119;
+    --ink:#EDE5D6;
+    --ink-soft:#BFB49E;
+    --stone:#9C8F77;
+    --gold:#D0AC5E;
+    --gold-soft:#B08F49;
+    --line:#3A3226;
+    --band:#100D0A;
+    --band-2:#191410;
+    --band-ink:#EFE7D8;
+    --band-soft:#9C8F77;
+    --band-line:rgba(176,143,73,.28);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 40px -18px rgba(0,0,0,.5);
+    --focus:#D0AC5E;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Mulish',-apple-system,'Segoe UI',sans-serif;
+    font-size:17px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold-soft);color:var(--band)}
+  .serif{font-family:'Cormorant Garamond',Georgia,serif}
+  .label{
+    font-size:.72rem;font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px}
+
+  /* ---------- HERO (dark) ---------- */
+  .hero{
+    background:radial-gradient(120% 90% at 50% 0%,var(--band-2) 0%,var(--band) 70%);
+    color:var(--band-ink);
+    min-height:92vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    padding:96px 24px 88px;
+  }
+  .breath-ring{
+    width:140px;height:140px;border-radius:50%;
+    border:1px solid var(--gold-soft);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:44px;position:relative;
+    animation:breathe 9s ease-in-out infinite;
+  }
+  .breath-ring::before{
+    content:"";position:absolute;inset:13px;border-radius:50%;
+    border:1px solid var(--gold-soft);opacity:.45;
+    animation:breathe 9s ease-in-out infinite;animation-delay:.35s;
+  }
+  .breath-ring::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--gold-soft)}
+  @keyframes breathe{
+    0%,100%{transform:scale(.88);opacity:.7}
+    45%,60%{transform:scale(1.06);opacity:1}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .breath-ring,.breath-ring::before{animation:none}
+    html{scroll-behavior:auto}
+  }
+  .hero .label{color:var(--gold-soft);margin-bottom:26px}
+  h1{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-weight:300;
+    font-size:clamp(2.9rem,8vw,5.2rem);
+    line-height:1.05;text-wrap:balance;
+    margin-bottom:24px;
+  }
+  h1 em{font-style:italic;font-weight:400;color:var(--gold-soft)}
+  .hero-sub{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic;font-size:clamp(1.3rem,3vw,1.7rem);
+    color:var(--band-soft);max-width:32ch;text-wrap:balance;
+    margin-bottom:40px;
+  }
+  .hero-meta{
+    display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
+    margin-bottom:44px;
+  }
+  .meta-pill{
+    font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--band-ink);
+    border:1px solid var(--band-line);
+    border-radius:999px;padding:11px 24px;
+  }
+  .meta-pill b{color:var(--gold-soft)}
+  .btn{
+    display:inline-block;
+    font-family:'Mulish',sans-serif;
+    font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    border-radius:999px;padding:17px 44px;
+    text-decoration:none;cursor:pointer;border:none;
+    transition:background .3s ease,color .3s ease;
+  }
+  .btn:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+  .btn-gold{background:var(--gold);color:#FCFAF5}
+  .btn-gold:hover{background:var(--gold-soft)}
+  .btn-ghost{
+    background:none;color:var(--gold);
+    border:1px solid var(--gold-soft);
+  }
+  .btn-ghost:hover{background:var(--gold);color:#FCFAF5}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:96px 0 8px}
+  .eyebrow{display:block;margin-bottom:16px}
+  h2{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-weight:400;
+    font-size:clamp(1.9rem,4.5vw,2.7rem);
+    line-height:1.15;text-wrap:balance;
+    margin-bottom:18px;
+  }
+  .rule-gold{height:1px;background:var(--gold-soft);opacity:.6;max-width:96px;margin-bottom:28px}
+  p.body{color:var(--ink-soft);max-width:62ch}
+  p.body+p.body{margin-top:16px}
+  p.body b{color:var(--ink)}
+  .lede{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:clamp(1.45rem,3.2vw,1.8rem);
+    line-height:1.5;text-wrap:balance;
+    margin-bottom:22px;
+  }
+  .lede i{color:var(--gold)}
+
+  .remember{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic;font-size:1.4rem;text-align:center;
+    max-width:40ch;margin:56px auto 8px;text-wrap:balance;
+  }
+  .remember span{color:var(--gold)}
+
+  /* for-you pairs */
+  .pairs{list-style:none;margin-top:40px;display:flex;flex-direction:column}
+  .pairs li{padding:26px 4px;border-bottom:1px solid var(--line)}
+  .pairs li:first-child{border-top:1px solid var(--line)}
+  .pairs .claim{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-weight:600;font-size:1.35rem;line-height:1.35;
+    margin-bottom:8px;
+  }
+  .pairs .reframe{color:var(--ink-soft);font-size:.97rem;display:flex;gap:12px}
+  .pairs .reframe::before{content:"⟶";color:var(--gold);flex:none}
+
+  /* inside cards */
+  .inside{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+  @media (max-width:680px){.inside{grid-template-columns:1fr}}
+  .inside-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:2px;
+    box-shadow:var(--shadow);padding:34px 32px;
+  }
+  .inside-card .label{display:block;margin-bottom:14px}
+  .inside-card h3{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-weight:600;font-size:1.45rem;margin-bottom:10px;
+  }
+  .inside-card p{font-size:.95rem;color:var(--ink-soft)}
+  .inside-card p+p{margin-top:10px}
+  .inside-card p b{color:var(--ink)}
+
+  /* proof quote */
+  .proof{
+    background:var(--surface);border:1px solid var(--line);border-radius:2px;
+    box-shadow:var(--shadow);padding:44px 40px;margin-top:40px;text-align:center;
+  }
+  .proof .q{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:clamp(1.5rem,3.4vw,1.95rem);font-style:italic;line-height:1.45;
+    text-wrap:balance;
+  }
+  .proof .q span{color:var(--gold);font-style:normal}
+
+  /* shifts */
+  .shifts{list-style:none;margin-top:40px;display:flex;flex-direction:column}
+  .shifts li{
+    display:flex;gap:18px;padding:18px 4px;
+    border-bottom:1px solid var(--line);
+  }
+  .shifts li:first-child{border-top:1px solid var(--line)}
+  .shifts .mark{color:var(--gold);flex:none;font-size:.9rem;padding-top:2px}
+  .shifts .s b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:1.2rem}
+  .shifts .s span{color:var(--ink-soft);font-size:.95rem}
+
+  /* story band */
+  .band{
+    background:var(--band);color:var(--band-ink);
+    margin-top:96px;padding:96px 24px;
+  }
+  .band .label{color:var(--gold-soft)}
+  .band h2{color:var(--band-ink)}
+  .band p{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:1.3rem;line-height:1.65;color:var(--band-soft);
+    max-width:56ch;
+  }
+  .band p+p{margin-top:20px}
+  .band p b{color:var(--band-ink);font-weight:500}
+  .band p.hl{color:var(--band-ink);font-style:italic}
+  .band .sign{
+    margin-top:40px;font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic;font-size:1.25rem;color:var(--band-soft);
+  }
+  .band .sign .name{display:block;font-size:1.9rem;color:var(--gold-soft);margin-top:4px}
+
+  /* invitation */
+  .invite-card{
+    background:var(--surface);border:1px solid var(--gold-soft);border-radius:2px;
+    box-shadow:var(--shadow);padding:52px 44px;margin-top:44px;text-align:center;
+  }
+  .invite-card .lede{margin-bottom:8px}
+  .invite-facts{
+    display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+    margin:30px 0 26px;
+  }
+  .fact{
+    border:1px solid var(--line);border-radius:2px;
+    padding:20px 34px;min-width:180px;
+  }
+  .fact .n{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-weight:300;font-size:2.4rem;line-height:1.1;color:var(--gold);
+    font-variant-numeric:tabular-nums;
+  }
+  .fact .u{
+    display:block;margin-top:6px;
+    font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--stone);
+  }
+  .invite-card p.small{font-size:.95rem;color:var(--ink-soft);max-width:40ch;margin:0 auto 30px}
+
+  /* ---------- RESERVE / FORM ---------- */
+  .reserve{padding-bottom:40px}
+  .steps{
+    display:flex;gap:0;justify-content:center;
+    margin:44px 0 52px;flex-wrap:wrap;
+  }
+  .step{
+    display:flex;align-items:center;gap:12px;
+    padding:0 22px;
+  }
+  .step+.step{border-left:1px solid var(--line)}
+  .step .dot{
+    font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+    font-size:1.25rem;color:var(--gold);
+  }
+  .step .t{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+  @media (max-width:640px){
+    .steps{flex-direction:column;align-items:center;gap:12px}
+    .step+.step{border-left:none}
+  }
+
+  .form-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:2px;
+    box-shadow:var(--shadow);padding:48px 44px;
+  }
+  @media (max-width:560px){.form-card{padding:36px 24px}}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media (max-width:560px){.fgrid{grid-template-columns:1fr}}
+  .field{display:flex;flex-direction:column;gap:8px}
+  .field.full{grid-column:1/-1}
+  .field label{
+    font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--stone);
+  }
+  .field label .req{color:var(--gold)}
+  .field input,.field textarea{
+    font-family:'Mulish',sans-serif;font-size:1rem;color:var(--ink);
+    background:var(--bg);
+    border:1px solid var(--line);border-radius:2px;
+    padding:13px 16px;
+    transition:border-color .25s ease;
+  }
+  .field textarea{resize:vertical;min-height:88px}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+  .field input.err,.field textarea.err{border-color:#B3462E}
+  .radio-row{display:flex;gap:12px}
+  .radio-opt{
+    flex:1;text-align:center;
+    border:1px solid var(--line);border-radius:999px;
+    padding:12px 10px;cursor:pointer;
+    font-size:.8rem;font-weight:600;letter-spacing:.08em;
+    color:var(--ink-soft);
+    transition:border-color .25s ease,background .25s ease,color .25s ease;
+    user-select:none;
+  }
+  .radio-opt input{position:absolute;opacity:0;pointer-events:none}
+  .radio-opt.sel{border-color:var(--gold);background:var(--surface-2);color:var(--ink)}
+  .radio-opt:focus-within{outline:2px solid var(--focus);outline-offset:2px}
+
+  .cta-micro{
+    font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+    font-size:1rem;color:var(--stone);
+  }
+  .pay-note{
+    margin-top:34px;
+    border-left:2px solid var(--gold);
+    background:var(--surface-2);
+    padding:24px 28px;border-radius:0 2px 2px 0;
+  }
+  .pay-note .label{display:block;margin-bottom:8px}
+  .pay-note p{font-size:.94rem;color:var(--ink-soft)}
+  .pay-note p b{color:var(--ink)}
+  .pay-note a.venmo{color:var(--gold);font-weight:700;text-decoration:none}
+  .pay-note a.venmo:hover{text-decoration:underline}
+
+  .form-actions{
+    margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;
+  }
+  .form-hint{font-size:.85rem;color:var(--stone);margin-top:18px;max-width:52ch}
+  .form-error{
+    display:none;margin-top:18px;font-size:.9rem;font-weight:600;color:#B3462E;
+  }
+  .form-error.show{display:block}
+
+  .photo-sec{padding:72px 0 0}
+  .photo-wide{margin:0}
+  .photo-wide img{width:100%;display:block;border-radius:2px;border:1px solid var(--line)}
+  .photo-wide figcaption{
+    font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+    font-size:1.05rem;color:var(--stone);text-align:center;margin-top:16px;
+  }
+  .story-grid{display:grid;grid-template-columns:290px 1fr;gap:52px;align-items:start;margin-top:8px}
+  @media (max-width:760px){.story-grid{grid-template-columns:1fr}.story-portrait{max-width:270px;margin:0 auto}}
+  .story-portrait{margin:0;padding:12px 12px 0;border:1px solid var(--band-line);border-radius:999px 999px 2px 2px}
+  .story-portrait img{width:100%;display:block;border-radius:987px 987px 2px 2px}
+  .photo-arch{max-width:520px;margin:64px auto 0;padding:13px 13px 0;border:1px solid var(--gold-soft);border-radius:999px 999px 2px 2px}
+  .photo-arch img{width:100%;display:block;border-radius:985px 985px 2px 2px}
+  .photo-arch-cap{
+    font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+    font-size:1.05rem;color:var(--stone);text-align:center;margin-top:16px;
+  }
+  @media (max-width:640px){.photo-arch{max-width:340px;margin-top:44px}}
+
+  .tmls{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+  @media (max-width:680px){.tmls{grid-template-columns:1fr}}
+  .tml{
+    background:var(--surface);border:1px solid var(--line);border-radius:2px;
+    box-shadow:var(--shadow);padding:32px 30px 26px;position:relative;
+    display:flex;flex-direction:column;
+  }
+  .tml .qm{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:2.6rem;line-height:1;color:var(--gold-soft);
+    margin-bottom:10px;
+  }
+  .tml p{
+    font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+    font-size:1.18rem;line-height:1.55;color:var(--ink);flex:1;
+  }
+  .tml p b{font-style:italic;color:var(--gold);font-weight:600}
+  .tml .who{
+    margin-top:18px;font-family:'Mulish',sans-serif;
+    font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--stone);
+  }
+
+  .story-tease{
+    font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+    font-size:1.15rem;line-height:1.6;color:var(--ink-soft);
+    border-left:2px solid var(--gold-soft);
+    padding-left:20px;margin-top:26px;max-width:54ch;
+  }
+  .story-tease a{color:var(--gold);text-decoration:none;font-style:normal;font-family:'Mulish',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+  .story-tease a:hover{text-decoration:underline}
+  .guarantee{
+    border:1px solid var(--line);border-radius:2px;
+    max-width:440px;margin:0 auto 32px;padding:22px 28px;
+  }
+  .guarantee .label{display:block;margin-bottom:8px}
+  .guarantee p{
+    font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+    font-size:1.12rem;line-height:1.55;color:var(--ink);max-width:38ch;margin:0 auto;
+  }
+  .guarantee p b{color:var(--gold);font-style:italic}
+
+  /* ---------- DESKTOP FLOURISHES ---------- */
+  @media (min-width:761px){
+    .story-portrait{position:relative;top:8px}
+  }
+
+  /* ---------- MOBILE TREATMENT ---------- */
+  @media (max-width:640px){
+    body{font-size:16px;line-height:1.7}
+    section{padding:60px 0 8px}
+    .hero{min-height:100svh;padding:80px 22px 96px}
+    .breath-ring{width:112px;height:112px;margin-bottom:36px}
+    .hero-meta{gap:10px;margin-bottom:36px}
+    .meta-pill{padding:9px 18px;font-size:.68rem}
+    .lede{font-size:1.4rem}
+    .band{margin-top:64px;padding:68px 22px}
+    .band p{font-size:1.18rem}
+    .invite-card{padding:40px 22px}
+    .invite-facts{gap:10px}
+    .fact{min-width:0;flex:1;padding:16px 12px}
+    .fact .n{font-size:1.9rem}
+    .form-card{padding:34px 20px}
+    .pairs li{padding:22px 2px}
+    .pairs .claim{font-size:1.22rem}
+    .proof{padding:34px 26px}
+    .photo-sec{padding:52px 0 0}
+    .remember{font-size:1.22rem;margin-top:44px}
+    .steps{margin:34px 0 40px}
+  }
+
+  /* ---------- SCROLL REVEAL (CSS-only, safe fallback = visible) ---------- */
+  @media (prefers-reduced-motion: no-preference){
+    @supports (animation-timeline: view()){
+      section, .band, footer{
+        animation:fadeUp .9s ease both;
+        animation-timeline:view();
+        animation-range:entry 0% entry 35%;
+      }
+    }
+  }
+  @keyframes fadeUp{from{opacity:.001;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+  /* ---------- MOBILE STICKY CTA ---------- */
+  .mobile-cta{
+    position:fixed;left:0;right:0;bottom:0;z-index:50;
+    display:none;align-items:center;justify-content:space-between;gap:14px;
+    background:var(--band);color:var(--band-ink);
+    border-top:1px solid var(--band-line);
+    padding:12px 18px calc(12px + env(safe-area-inset-bottom));
+    transform:translateY(110%);transition:transform .45s ease;
+  }
+  .mobile-cta.show{transform:none}
+  .mobile-cta .mc-txt{display:flex;flex-direction:column;line-height:1.35;min-width:0}
+  .mobile-cta .mc-txt b{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:1.05rem;white-space:nowrap}
+  .mobile-cta .mc-txt span{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
+  .mobile-cta .mc-btn{padding:13px 26px;font-size:.7rem;flex:none}
+  @media (max-width:760px){.mobile-cta{display:flex}}
+  @media (prefers-reduced-motion: reduce){.mobile-cta{transition:none}}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:96px;
+    padding:44px 24px 56px;text-align:center;
+  }
+  footer a{
+    color:var(--gold);text-decoration:none;
+    letter-spacing:.2em;text-transform:uppercase;font-size:.78rem;font-weight:700;
+  }
+  footer a:hover{text-decoration:underline}
+  footer .tag{margin-top:12px;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--stone)}
+</style>
+
+</head>
+<body>
+<!-- HERO -->
+<div class="hero">
+  <div class="breath-ring" aria-hidden="true"></div>
+  <span class="label">The House of Jasper</span>
+  <h1>The 22 Day<br><em>Nervous System Reset</em></h1>
+  <p class="hero-sub">Find calm, clarity + confidence — even when life gets loud.</p>
+  <div class="hero-meta">
+    <span class="meta-pill">Begins <b>11 · 11</b></span>
+    <span class="meta-pill">Founding rate <b>$111</b></span>
+  </div>
+  <a class="btn btn-gold" href="#reserve">Yes — I’m ready to reset</a>
+</div>
+
+<!-- HOOK -->
+<section>
+  <div class="wrap">
+    <p class="lede">What if peace wasn’t a pursuit, but something you could access <i>anytime, anywhere?</i></p>
+    <div class="rule-gold"></div>
+    <p class="body">This reset is designed to do exactly that. Over 22 days, you won’t need to rearrange your whole life or meditate for hours to find peace — you’ll learn how to <b>reset within your life</b>, using simple nervous system tools you can return to in real moments to find your footing, breathe deeper, and connect to yourself again.</p>
+    <p class="story-tease">“From 2021 to early 2024, life kept moving on the outside… but inside, everything went gray. I didn’t create this reset from theory — I created it because I needed it.” <a href="#story">Read my story ↓</a></p>
+  </div>
+</section>
+
+<!-- TEACHING PHOTO -->
+<section class="photo-sec">
+  <div class="wrap">
+    <figure class="photo-wide">
+      <img src="img/mel-teaching.jpg" alt="Melissa Rose guiding a class through a closing rest">
+      <figcaption>Melissa guiding a room back to stillness.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- MICRO PRACTICES -->
+<section>
+  <div class="wrap">
+    <span class="label eyebrow">Micro practices · Major shifts</span>
+    <h2>This Is How Change Really Happens</h2>
+    <div class="rule-gold"></div>
+    <p class="body">You don’t need hours of meditation, a perfect routine, or a retreat to change your life. You just need <b>small, repeatable moments</b> that teach your body how to breathe again.</p>
+    <div class="proof">
+      <p class="q">Your nervous system doesn’t change through pressure — <span>it changes through proof.</span></p>
+    </div>
+    <p class="body" style="margin-top:34px">A few minutes a day — practiced with presence — can rewire more than any breakthrough ever will. When your body feels safe, consistency stops being effort — it becomes your nature. By the end of these 22 days, you won’t just understand calm — <b>you’ll embody it.</b> In conversations. In challenges. In real life.</p>
+  </div>
+</section>
+
+<!-- STORY BAND -->
+<div class="band" id="story">
+  <div class="wrap">
+    <span class="label eyebrow">The story behind the reset</span>
+    <h2>I Didn’t Create This From Theory</h2>
+    <div class="rule-gold" style="margin-bottom:36px"></div>
+    <div class="story-grid">
+      <figure class="story-portrait"><img src="img/mel-portrait.jpg" alt="Melissa Rose"></figure>
+      <div class="story-text">
+    <p>I created it because I needed it. From 2021 to early 2024, life kept moving on the outside… but inside, everything went gray. It wasn’t chaos — it was a quiet hollow. Joy felt distant. My nervous system swung between fight, flight, and freeze, and there were days I wondered if I’d ever feel like myself again.</p>
+    <p>I could guide others into calm — yet I couldn’t always reach it within myself. Some days, all I could do was place one hand on my heart, one on my belly, and breathe through a single moment.</p>
+    <p>There was no sudden breakthrough. No morning I woke up healed. Only small practices — breaths, pauses, gentle acts of regulation. <b>Repetition became medicine.</b></p>
+    <p>Over time, my breath softened. Color returned. Peace stopped being something I chased — and became something I built. I still practice this work daily — not because I’m broken, but because this is how I stay whole.</p>
+    <p class="hl">This isn’t a program. It’s a return — a remembering of the calm that’s always been yours.</p>
+    <p class="sign">With you, breath by breath —<span class="name">Melissa Rose 🌹</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOR YOU IF -->
+<section>
+  <div class="wrap">
+    <span class="label eyebrow">Is this you?</span>
+    <h2>This Reset Is For You If…</h2>
+    <div class="rule-gold"></div>
+    <ul class="pairs">
+      <li>
+        <p class="claim">You’re high‑functioning, but often running on pressure.</p>
+        <p class="reframe">You get things done, you hold it together — but your body rarely feels truly at ease.</p>
+      </li>
+      <li>
+        <p class="claim">You’ve done the work — yoga, breath, therapy, mindset.</p>
+        <p class="reframe">Yet you still struggle to feel different when real life gets loud.</p>
+      </li>
+      <li>
+        <p class="claim">You know how to find calm in controlled spaces.</p>
+        <p class="reframe">In class, on retreat, in silence… but you lose it the moment you’re back in daily life.</p>
+      </li>
+      <li>
+        <p class="claim">You don’t need more motivation — you need regulation.</p>
+        <p class="reframe">You’re not undisciplined. Your system is overtaxed.</p>
+      </li>
+      <li>
+        <p class="claim">You’ve fallen off your practices and want a reset.</p>
+        <p class="reframe">Not another program to keep up with — a steady rhythm that brings you back to yourself.</p>
+      </li>
+    </ul>
+    <p class="remember">If you’re ready to <span>meet your life</span>, instead of just manage it — this is for you.</p>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section>
+  <div class="wrap">
+    <span class="label eyebrow">You already hold the key</span>
+    <h2>This Isn’t About Doing More</h2>
+    <div class="rule-gold"></div>
+    <p class="body">It’s about learning what calm truly feels like — and knowing how to come back to your center whenever you need. You won’t be flooded with information or forced into discipline. You’ll be met with <b>grounded, repeatable practices your body can actually integrate</b> — where calm stops being a concept and becomes your capacity.</p>
+    <div class="inside">
+      <div class="inside-card">
+        <span class="label">🔑 Every Day</span>
+        <h3>Daily Practices + Gentle Reminders</h3>
+        <p>Short, effective nervous system practices.</p>
+        <p>Light reminders to help you stay consistent as your new rhythm takes shape.</p>
+      </div>
+      <div class="inside-card">
+        <span class="label">🏆 Three Guided Sessions</span>
+        <h3>Release · Regulate · Integrate</h3>
+        <p>Guided experiences to deepen nervous system healing — and truly reset your system from the root.</p>
+        <p>Each session blends clearing, embodiment, and integration — <b>a reset within the reset</b>.</p>
+      </div>
+    </div>
+    <figure class="photo-arch" style="margin-bottom:0">
+      <img src="img/mel-bowls.jpg" alt="Melissa Rose playing crystal sound bowls at golden hour">
+    </figure>
+    <p class="photo-arch-cap">Release · Regulate · Integrate — the guided sessions.</p>
+  </div>
+</section>
+
+<!-- WHAT CHANGES -->
+<section>
+  <div class="wrap">
+    <span class="label eyebrow">What begins to change</span>
+    <h2>Quiet, Powerful Transformation</h2>
+    <div class="rule-gold"></div>
+    <figure class="photo-wide" style="margin:36px 0 44px">
+      <img src="img/mel-circle.jpg" alt="Melissa leading a standing meditation, hands at heart center">
+      <figcaption>Presence, practiced together.</figcaption>
+    </figure>
+    <ul class="shifts">
+      <li><span class="mark">✦</span><div class="s"><b>Your stress softens.</b><span>You wake with more breath, less bracing. Your body begins to trust calm.</span></div></li>
+      <li><span class="mark">✦</span><div class="s"><b>You move with less rushing.</b><span>Grounded and at ease — you respond instead of react.</span></div></li>
+      <li><span class="mark">✦</span><div class="s"><b>A natural pause appears.</b><span>Giving space for choice. You return to yourself faster.</span></div></li>
+      <li><span class="mark">✦</span><div class="s"><b>Hard moments still happen.</b><span>But they don’t take you with them.</span></div></li>
+      <li><span class="mark">✦</span><div class="s"><b>You feel safe in your own skin.</b><span>This isn’t about escaping — it’s remembering what your body has always known: you are safe within yourself.</span></div></li>
+    </ul>
+    <p class="remember">Life stops feeling like something to manage — <span>and starts feeling like something you can meet.</span></p>
+  </div>
+</section>
+
+<!-- CLIENT LOVE -->
+<section>
+  <div class="wrap">
+    <span class="label eyebrow">Client love</span>
+    <h2>In Their Words</h2>
+    <div class="rule-gold"></div>
+    <div class="tmls">
+      <div class="tml"><span class="qm">“</span>
+        <p>Her guidance, her voice and her wisdom have transformed the lens through which I view and experience life… The old filters I’ve constructed for myself are dissolving, and what’s presented itself on the other side is <b>true freedom</b>.</p>
+        <span class="who">— Tara M.</span>
+      </div>
+      <div class="tml"><span class="qm">“</span>
+        <p>I won’t go into detail, but I laughed, cried, left my body, came back to my body — and went home feeling <b>like a new person</b>.</p>
+        <span class="who">— Michaela W.</span>
+      </div>
+      <div class="tml"><span class="qm">“</span>
+        <p>A renewed sense of self-love, appreciation and patience for my inner child — and immediate awareness of how I can be a <b>better mother to my daughter and a better wife to my husband</b>.</p>
+        <span class="who">— A client of Melissa’s</span>
+      </div>
+      <div class="tml"><span class="qm">“</span>
+        <p>Self-work can be scary and intimidating. Melissa creates a safe space where there is no judgement — only guidance, love, and light. Consider it <b>an investment in yourself that will never depreciate</b>.</p>
+        <span class="who">— Mick M.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVITATION -->
+<section>
+  <div class="wrap">
+    <figure class="photo-wide" style="margin-bottom:44px">
+      <img src="img/mel-joy.jpg" alt="Melissa laughing with students after class">
+      <figcaption>You return to yourself — and it shows.</figcaption>
+    </figure>
+    <div class="invite-card">
+      <span class="label">The Invitation</span>
+      <p class="lede" style="margin-top:14px">Peace doesn’t begin when life gets easier — <i>it begins the moment you decide to return to yourself.</i></p>
+      <div class="invite-facts">
+        <div class="fact"><span class="n">11 · 11</span><span class="u">We begin</span></div>
+        <div class="fact"><span class="n">$111</span><span class="u">Founding rate</span></div>
+        <div class="fact"><span class="n">22</span><span class="u">Days together</span></div>
+      </div>
+      <p class="small">You don’t need to prepare. You don’t need to be perfect. You just need to be present.</p>
+      <div class="guarantee">
+        <span class="label">Melissa’s promise</span>
+        <p>Do the 22 days with me. If your body doesn’t feel different, I’ll return your $111 — <b>no questions, no friction</b>.</p>
+      </div>
+      <a class="btn btn-gold" href="#reserve">Yes — I’m ready to reset</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVE -->
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <span class="label eyebrow">Reserve your spot</span>
+    <h2>Join the 22 Day Reset</h2>
+    <div class="rule-gold"></div>
+    <div class="steps">
+      <div class="step"><span class="dot">i.</span><span class="t">Your details</span></div>
+      <div class="step"><span class="dot">ii.</span><span class="t">Secure checkout</span></div>
+      <div class="step"><span class="dot">iii.</span><span class="t">You're in</span></div>
+    </div>
+
+    <div class="form-card">
+      <div class="fgrid">
+        <div class="field">
+          <label for="f-first">First name <span class="req">*</span></label>
+          <input id="f-first" type="text" autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label for="f-last">Last name <span class="req">*</span></label>
+          <input id="f-last" type="text" autocomplete="family-name">
+        </div>
+        <div class="field">
+          <label for="f-email">Email address <span class="req">*</span></label>
+          <input id="f-email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="f-phone">Mobile number <span class="req">*</span></label>
+          <input id="f-phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="f-city">City &amp; state <span class="req">*</span></label>
+          <input id="f-city" type="text" autocomplete="address-level2">
+        </div>
+        <div class="field">
+          <label id="contact-label">Preferred contact method <span class="req">*</span></label>
+          <div class="radio-row" role="radiogroup" aria-labelledby="contact-label">
+            <label class="radio-opt"><input type="radio" name="contact" value="Phone">Phone</label>
+            <label class="radio-opt"><input type="radio" name="contact" value="Email">Email</label>
+          </div>
+        </div>
+        <div class="field full">
+          <label for="f-heard">How did you hear about this reset?</label>
+          <input id="f-heard" type="text">
+        </div>
+        <div class="field full">
+          <label for="f-note">Anything you’d like Melissa to know?</label>
+          <textarea id="f-note"></textarea>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-gold" id="continueBtn" type="button">Yes — I’m ready to reset</button>
+        <span class="cta-micro">22 days · a few minutes a day · begins 11/11</span>
+      </div>
+      <p class="form-error" id="formError">A few required details are missing — the fields are marked above.</p>
+      <p class="form-hint">Secure checkout by Stripe — about a minute. Your spot is held the moment your payment completes. And Melissa’s promise stands: if your body doesn’t feel different after the 22 days, your $111 comes back — no questions. 🌸</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="https://www.thehouseofjasper.com" target="_blank" rel="noopener">The House of Jasper</a>
+  <p class="tag">Wellness · Mindfulness · Embodied Practice</p>
+</footer>
+
+<div class="mobile-cta" id="mobileCta" aria-hidden="true">
+  <div class="mc-txt"><b>The 22 Day Reset</b><span>Begins 11·11 · $111</span></div>
+  <a class="btn btn-gold mc-btn" href="#reserve">I’m ready</a>
+</div>
+
+<script>
+(function(){
+  var radios=document.querySelectorAll('.radio-opt');
+  radios.forEach(function(opt){
+    opt.querySelector('input').addEventListener('change',function(){
+      radios.forEach(function(o){o.classList.remove('sel')});
+      opt.classList.add('sel');
+    });
+  });
+
+  var BACKEND='https://jasper-checkout.onrender.com';
+  fetch(BACKEND+'/health').catch(function(){});  // warm the service while they read
+
+  var REQUIRED=['f-first','f-last','f-email','f-phone','f-city'];
+  var err=document.getElementById('formError');
+  var btn=document.getElementById('continueBtn');
+
+  btn.addEventListener('click',function(){
+    var ok=true;
+    REQUIRED.forEach(function(id){
+      var el=document.getElementById(id);
+      var bad=!el.value.trim();
+      el.classList.toggle('err',bad);
+      if(bad)ok=false;
+    });
+    var contact=document.querySelector('input[name="contact"]:checked');
+    if(!contact){
+      ok=false;
+      radios.forEach(function(o){o.style.borderColor='#B3462E'});
+    }else{
+      radios.forEach(function(o){o.style.borderColor=''});
+    }
+    err.textContent='A few required details are missing — the fields are marked above.';
+    err.classList.toggle('show',!ok);
+    if(!ok)return;
+
+    btn.disabled=true;btn.style.opacity=.55;btn.textContent='One moment…';
+    fetch(BACKEND+'/lead',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        first:document.getElementById('f-first').value.trim(),
+        last:document.getElementById('f-last').value.trim(),
+        email:document.getElementById('f-email').value.trim(),
+        phone:document.getElementById('f-phone').value.trim(),
+        city:document.getElementById('f-city').value.trim(),
+        contact:contact.value,
+        heard:document.getElementById('f-heard').value.trim(),
+        note:document.getElementById('f-note').value.trim()
+      })
+    }).then(function(r){return r.json()}).then(function(d){
+      if(d.url){location.href=d.url;return;}
+      throw new Error(d.error||'no url');
+    }).catch(function(){
+      btn.disabled=false;btn.style.opacity=1;btn.textContent='Yes — I’m ready to reset';
+      err.textContent='Something hiccuped — please try again in a moment.';
+      err.classList.add('show');
+    });
+  });
+
+  var bar=document.getElementById('mobileCta');
+  var reserve=document.getElementById('reserve');
+  function update(){
+    var r=reserve.getBoundingClientRect();
+    var reserveVisible=r.top<window.innerHeight&&r.bottom>0;
+    var past=window.scrollY>window.innerHeight*.85;
+    var show=past&&!reserveVisible;
+    bar.classList.toggle('show',show);
+    bar.setAttribute('aria-hidden',show?'false':'true');
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+})();
+</script>
+
+</body>
+</html>
