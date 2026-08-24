@@ -10,6 +10,7 @@ All secrets come from environment variables — nothing sensitive lives in this 
 import json
 import os
 import smtplib
+import threading
 from email.mime.text import MIMEText
 
 import requests
@@ -107,9 +108,11 @@ def lead():
         f"\U0001f525 Reset checkout hit\n{first} {last}\n{phone} · {email}\n"
         f"{city}" + (f"\nHeard via: {heard}" if heard else "")
     )
-    for n in HIT_SMS_TO:
-        send_sms(n, hit)
-    send_email(HIT_EMAIL_TO, f"🔥 Reset checkout hit — {first} {last}", hit)
+    def notify_hit():
+        for n in HIT_SMS_TO:
+            send_sms(n, hit)
+        send_email(HIT_EMAIL_TO, f"🔥 Reset checkout hit — {first} {last}", hit)
+    threading.Thread(target=notify_hit, daemon=True).start()
 
     try:
         session = stripe.checkout.Session.create(
