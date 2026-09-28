@@ -11,11 +11,13 @@ import json
 import os
 import smtplib
 import threading
+import time
+from datetime import datetime, timezone
 from email.mime.text import MIMEText
 
 import requests
 import stripe
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, redirect, request
 
 app = Flask(__name__)
 
@@ -25,6 +27,21 @@ WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET", "")
 TWILIO_SID = os.environ["TWILIO_SID"]
 TWILIO_TOKEN = os.environ["TWILIO_TOKEN"]
 TWILIO_FROM = os.environ["TWILIO_FROM"]
+# US numbers must go out through the A2P 10DLC messaging service (+1 661 number);
+# Canadian numbers keep using TWILIO_FROM (the 431 number).
+TWILIO_MG_US = os.environ.get("TWILIO_MG_US", "")
+CA_AREA = {"204", "226", "236", "249", "250", "263", "289", "306", "343", "354", "365", "367", "368",
+           "382", "403", "416", "418", "428", "431", "437", "438", "450", "468", "474", "506", "514",
+           "519", "548", "579", "581", "584", "587", "600", "604", "613", "639", "647", "672", "683",
+           "705", "709", "742", "753", "778", "780", "782", "807", "819", "825", "867", "873", "879",
+           "902", "905"}
+OPTIN_SITE = "https://parkerlazeski-oss.github.io/parker-sms"
+OPTIN_NOTIFY_SMS = os.environ.get("OPTIN_NOTIFY_SMS", "+13068817888")
+OPTIN_NOTIFY_EMAIL = os.environ.get("OPTIN_NOTIFY_EMAIL", "parkerlazeski@gmail.com")
+OPTIN_CONFIRM = (
+    "Parker Lazeski Alerts: You're subscribed to website alerts and reminders. "
+    "Msg frequency varies. Msg & data rates may apply. Reply HELP for help, STOP to opt out."
+)
 SITE = os.environ.get("SITE", "https://the22dayreset.com")
 ALLOWED_ORIGINS = {SITE, "https://www.the22dayreset.com"}
 
@@ -59,11 +76,16 @@ def send_email(recipients, subject, body):
 
 
 def send_sms(to, body):
+    data = {"To": to, "Body": body}
+    if TWILIO_MG_US and to.startswith("+1") and to[2:5] not in CA_AREA:
+        data["MessagingServiceSid"] = TWILIO_MG_US
+    else:
+        data["From"] = TWILIO_FROM
     try:
         r = requests.post(
             f"https://api.twilio.com/2010-04-01/Accounts/{TWILIO_SID}/Messages.json",
             auth=(TWILIO_SID, TWILIO_TOKEN),
-            data={"From": TWILIO_FROM, "To": to, "Body": body},
+            data=data,
             timeout=10,
         )
         return r.status_code < 300
@@ -155,6 +177,60 @@ def webhook():
             send_sms(n, sale)
         send_email(SALE_EMAIL_TO, f"💰 SALE — {name} joined the 22 Day Reset", sale)
     return "ok"
+
+
+_optin_hits = {}
+
+
+def normalize_phone(raw):
+    digits = "".join(c for c in raw if c.isdigit())
+    if len(digits) == 10:
+        digits = "1" + digits
+    if len(digits) == 11 and digits[0] == "1":
+        return "+" + digits
+    return None
+
+
+@app.route("/sms-optin", methods=["POST"])
+def sms_optin():
+    """Opt-in form for Parker Lazeski Alerts (A2P 10DLC consent record)."""
+    f = request.form
+    if f.get("website"):  # honeypot
+        return redirect(f"{OPTIN_SITE}/thanks.html", 303)
+    ip = request.headers.get("X-Forwarded-For", request.remote_addr or "").split(",")[0].strip()
+    now = time.time()
+    recent = [t for t in _optin_hits.get(ip, []) if now - t < 3600]
+    if len(recent) >= 5:
+        return redirect(f"{OPTIN_SITE}/?error=limit", 303)
+    _optin_hits[ip] = recent + [now]
+
+    name = str(f.get("name", "")).strip()[:80]
+    phone = normalize_phone(str(f.get("phone", "")))
+    if not name or not phone:
+        return redirect(f"{OPTIN_SITE}/?error=phone", 303)
+    if f.get("consent") != "yes":
+        return redirect(f"{OPTIN_SITE}/?error=consent", 303)
+
+    record = {
+        "event": "sms_optin",
+        "program": "Parker Lazeski Alerts",
+        "name": name,
+        "phone": phone,
+        "consent_text": str(f.get("consent_text", ""))[:600],
+        "form_version": str(f.get("form_version", ""))[:20],
+        "at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "ip": ip,
+        "user_agent": request.headers.get("User-Agent", "")[:200],
+    }
+    print(json.dumps(record), flush=True)
+
+    def after():
+        send_sms(phone, OPTIN_CONFIRM)
+        send_sms(OPTIN_NOTIFY_SMS, f"SMS opt-in: {name} {phone}")
+        send_email([OPTIN_NOTIFY_EMAIL], f"SMS opt-in record: {name} {phone}",
+                   json.dumps(record, indent=2))
+    threading.Thread(target=after, daemon=True).start()
+    return redirect(f"{OPTIN_SITE}/thanks.html", 303)
 
 
 if __name__ == "__main__":
