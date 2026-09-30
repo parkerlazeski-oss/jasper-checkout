@@ -35,7 +35,7 @@ CA_AREA = {"204", "226", "236", "249", "250", "263", "289", "306", "343", "354",
            "519", "548", "579", "581", "584", "587", "600", "604", "613", "639", "647", "672", "683",
            "705", "709", "742", "753", "778", "780", "782", "807", "819", "825", "867", "873", "879",
            "902", "905"}
-OPTIN_SITE = "https://parkerlazeski-oss.github.io/parker-sms"
+OPTIN_SITE = "https://sms.parkerjay.com"
 OPTIN_NOTIFY_SMS = os.environ.get("OPTIN_NOTIFY_SMS", "+13068817888")
 OPTIN_NOTIFY_EMAIL = os.environ.get("OPTIN_NOTIFY_EMAIL", "parkerlazeski@gmail.com")
 OPTIN_CONFIRM = (
