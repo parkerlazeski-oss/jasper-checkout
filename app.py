@@ -205,18 +205,22 @@ def sms_optin():
     _optin_hits[ip] = recent + [now]
 
     name = str(f.get("name", "")).strip()[:80]
-    phone = normalize_phone(str(f.get("phone", "")))
-    if not name or not phone:
+    email = str(f.get("email", "")).strip()[:120]
+    if not name or "@" not in email:
+        return redirect(f"{OPTIN_SITE}/?error=fields", 303)
+    wants_sms = f.get("consent") == "yes"
+    phone = normalize_phone(str(f.get("phone", ""))) if wants_sms else None
+    if wants_sms and not phone:
         return redirect(f"{OPTIN_SITE}/?error=phone", 303)
-    if f.get("consent") != "yes":
-        return redirect(f"{OPTIN_SITE}/?error=consent", 303)
 
     record = {
-        "event": "sms_optin",
+        "event": "alerts_signup",
         "program": "Parker Lazeski Alerts",
         "name": name,
+        "email": email,
+        "sms_opt_in": wants_sms,
         "phone": phone,
-        "consent_text": str(f.get("consent_text", ""))[:600],
+        "consent_text": str(f.get("consent_text", ""))[:600] if wants_sms else "",
         "form_version": str(f.get("form_version", ""))[:20],
         "at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "ip": ip,
@@ -225,12 +229,14 @@ def sms_optin():
     print(json.dumps(record), flush=True)
 
     def after():
-        send_sms(phone, OPTIN_CONFIRM)
-        send_sms(OPTIN_NOTIFY_SMS, f"SMS opt-in: {name} {phone}")
-        send_email([OPTIN_NOTIFY_EMAIL], f"SMS opt-in record: {name} {phone}",
+        kind = "SMS + email" if wants_sms else "email only"
+        if wants_sms:
+            send_sms(phone, OPTIN_CONFIRM)
+        send_sms(OPTIN_NOTIFY_SMS, f"Alerts sign-up ({kind}): {name} {email} {phone or ''}".strip())
+        send_email([OPTIN_NOTIFY_EMAIL], f"Alerts sign-up ({kind}): {name}",
                    json.dumps(record, indent=2))
     threading.Thread(target=after, daemon=True).start()
-    return redirect(f"{OPTIN_SITE}/thanks.html", 303)
+    return redirect(f"{OPTIN_SITE}/thanks.html?sms={1 if wants_sms else 0}", 303)
 
 
 if __name__ == "__main__":
